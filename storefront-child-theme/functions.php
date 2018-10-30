@@ -24,3 +24,11 @@ function sf_child_theme_dequeue_style() {
  */
 
 
+ add_action( 'woocommerce_after_shop_loop_item', 'add_stock',9 );
+
+ function add_stock() {
+    global $product;
+    echo "<p>
+
+    Stock: ". $product->get_stock_quantity()."</p>" ;
+ }

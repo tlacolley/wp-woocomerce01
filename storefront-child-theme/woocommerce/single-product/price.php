@@ -13,11 +13,4 @@ global $product;
 
 <?php else: ?>
 <p class="price"> Attention <?php echo $product->get_price();  ?>$ !!!!</p>
-
 <?php endif ?>
-<p>
-<?php
-// var_dump($product);
-
- ?>
-</p>
