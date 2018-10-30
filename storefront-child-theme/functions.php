@@ -27,8 +27,24 @@ function sf_child_theme_dequeue_style() {
  add_action( 'woocommerce_after_shop_loop_item', 'add_stock',9 );
 
  function add_stock() {
-    global $product;
-    echo "<p>
-
-    Stock: ". $product->get_stock_quantity()."</p>" ;
+     wc_get_template_part('template_wc_stock' ,'template_wc_stock' );
  }
+
+
+
+ add_filter( 'raw_woocommerce_price', 'wc_function_price' );
+ function wc_function_price( $price ) {
+ // Your code
+     if ($price > 50) {
+
+         $price = $price/1.2 ;
+     }
+     else if ($price >10) {
+         $price = $price/1.1 ;
+     }
+     else {
+         $price = $price/1.05 ;
+     }
+
+    return $price ;
+}
